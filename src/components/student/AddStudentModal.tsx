@@ -3,13 +3,13 @@ import { useState } from "react";
 interface Props {
   isOpen: boolean;
   onClose: () => void;
-  onSave: (student: { name: string; email: string; progress: number }) => void;
+  onSave: (student: { name: string; email: string; phone: string }) => void;
 }
 
 const AddStudentModal = ({ isOpen, onClose, onSave }: Props) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [progress, setProgress] = useState(0);
+  const [phone, setPhone] = useState("");
 
   if (!isOpen) return null;
 
@@ -20,11 +20,11 @@ const AddStudentModal = ({ isOpen, onClose, onSave }: Props) => {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            onSave({ name, email, progress });
+            onSave({ name, email, phone });
             onClose();
             setName("");
             setEmail("");
-            setProgress(0);
+            setPhone("");
           }}
           className="space-y-4"
         >
@@ -49,14 +49,12 @@ const AddStudentModal = ({ isOpen, onClose, onSave }: Props) => {
             />
           </div>
           <div>
-            <label className="block text-sm">Progress (%)</label>
+            <label className="block text-sm">Phone</label>
             <input
-              type="number"
-              value={progress}
-              onChange={(e) => setProgress(Number(e.target.value))}
+              type="phone"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
               className="w-full border rounded px-3 py-2"
-              min={0}
-              max={100}
               required
             />
           </div>

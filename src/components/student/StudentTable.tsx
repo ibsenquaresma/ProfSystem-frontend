@@ -3,12 +3,11 @@ import StudentRow from "./StudentRow";
 import AddStudentModal from "./AddStudentModal";
 import type { StudentRowProps } from "../../types/student";
 
-
 const StudentTable = () => {
   const [students, setStudents] = useState<StudentRowProps[]>([
-    { name: "Alice Johnson", email: "alice@example.com", progress: 80 },
-    { name: "Bruno Silva", email: "bruno@example.com", progress: 65 },
-    { name: "Camila Torres", email: "camila@example.com", progress: 90 },
+    { name: "Alice Johnson", email: "alice@example.com", phone: "555-5555678" },
+    { name: "Bruno Silva", email: "bruno@example.com", phone: "555-5555678"},
+    { name: "Camila Torres", email: "camila@example.com", phone: "555-5555678" },
   ]);
 
   const [modalOpen, setModalOpen] = useState(false);
@@ -33,7 +32,7 @@ const StudentTable = () => {
           <tr className="text-left text-gray-600 border-b">
             <th className="py-2 px-4">Name</th>
             <th className="py-2 px-4">Email</th>
-            <th className="py-2 px-4">Progress</th>
+            <th className="py-2 px-4">Phone</th>
             <th className="py-2 px-4 text-right">Actions</th>
           </tr>
         </thead>
